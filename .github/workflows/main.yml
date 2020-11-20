@@ -15,8 +15,8 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "ran-shell-command"
-  ran-shell-command:
+  # This workflow contains a job called "run-shell-commands" and a job called "run-windows-commands"
+  run-shell-commands:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -37,3 +37,12 @@ jobs:
           import platform
           print(platform.processor())
         shell: python
+
+  run-windows-commands:
+    runs-on: windows-latest
+    steps: 
+      - name: Directory Poweshell
+        run: Get Location
+      - name: Directory Bash
+        run: pwd
+        shell: bash
